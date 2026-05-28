@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>LeadDawn — Your overnight lead concierge</title>
+<title>LeadDawn — Your always-on lead concierge</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -182,6 +182,18 @@
     padding: 14px 6px;
   }
   .btn-ghost:hover{ color: var(--ink); }
+  .btn-outline{
+    background: transparent;
+    color: var(--accent-ink);
+    border: 1px solid rgba(59,130,246,.45);
+    box-shadow: 0 0 0 0 rgba(37,99,235,0);
+  }
+  .btn-outline:hover{
+    background: rgba(37,99,235,.10);
+    border-color: rgba(59,130,246,.7);
+    color: #fff;
+    transform: translateY(-1px);
+  }
 
   /* ——— section base ——— */
   section{ padding: clamp(72px, 10vw, 128px) 0; position: relative; }
@@ -277,7 +289,7 @@
     content:"";
     position: absolute; inset: 10% 5%;
     background:
-      radial-gradient(50% 50% at 50% 50%, rgba(59,130,246,.32), transparent 70%);
+      radial-gradient(50% 50% at 50% 50%, rgba(59,130,246,.15), transparent 70%);
     filter: blur(40px);
     z-index: 0; border-radius: 24px;
   }
@@ -337,30 +349,7 @@
     margin-top: 4px;
   }
   .brief-summary-bar .stat.booked .num{ color: var(--good); }
-  .brief-summary-bar .stat.awaiting .num{ color: var(--warn); }
-  .brief-filters{
-    display: flex; gap: 4px;
-    margin-bottom: 14px;
-    border-bottom: 1px solid var(--line);
-    padding-bottom: 8px;
-  }
-  .brief-filters .filter{
-    font-family: inherit;
-    font-size: 12px; font-weight: 500;
-    padding: 5px 10px; border-radius: 6px;
-    background: transparent; color: var(--ink-3);
-    border: 0; cursor: default;
-    letter-spacing: .005em;
-  }
-  .brief-filters .filter.active{
-    background: rgba(59,130,246,.14); color: var(--accent-ink);
-  }
-  .brief-filters .filter-count{
-    margin-left: auto;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10.5px; color: var(--ink-3);
-    align-self: center;
-  }
+  .brief-summary-bar .stat.qualified .num{ color: var(--accent-ink); }
   .brief-summary{
     font-size: 22px; font-weight: 600; letter-spacing: -.015em; color: var(--ink);
     margin: 0 0 4px;
@@ -408,24 +397,19 @@
   .lead-tag.booked{ color: var(--good); background: var(--good-bg); border-color: var(--good-line); }
   .lead-tag.booked .tdot{ background: var(--good); box-shadow: 0 0 8px rgba(52,211,153,.7); }
   .lead-tag.cold{ color: var(--ink-3); }
-  .lead-tag.midconv{ color: var(--warn); background: var(--warn-bg); border-color: var(--warn-line); }
-  .lead-tag.midconv .tdot{ background: var(--warn); }
+  .lead-tag.qualified{ color: var(--accent-ink); background: rgba(59,130,246,.10); border-color: rgba(59,130,246,.22); }
+  .lead-tag.qualified .tdot{ background: var(--accent-ink); }
+  .lead-source{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px; color: var(--ink-3);
+    margin-top: 4px; letter-spacing: .02em;
+  }
 
   .brief-foot{
-    padding: 12px 20px 14px;
-    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 20px 12px;
     border-top: 1px solid var(--line-2);
     background: rgba(255,255,255,.015);
   }
-  .brief-foot .open-dash{
-    font-family: inherit;
-    font-size: 13px; font-weight: 500;
-    color: var(--accent-ink);
-    text-decoration: none;
-    display: inline-flex; align-items: center; gap: 6px;
-    transition: color .15s ease, transform .15s ease;
-  }
-  .brief-foot .open-dash:hover{ color: var(--ink); transform: translateX(2px); }
 
   .brief-stage .stamp{
     position: absolute;
@@ -619,6 +603,7 @@
     position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
     color: var(--ink-3); pointer-events: none;
   }
+  form.early .field.team-size{ grid-column: 1 / -1; max-width: calc(50% - 5px); margin: 0 auto; width: 100%; }
   form.early .submit-row{ grid-column: 1 / -1; margin-top: 4px; }
   form.early button[type="submit"]{
     width: 100%;
@@ -648,6 +633,8 @@
     max-width: 50ch; margin-left:auto; margin-right:auto;
     line-height: 1.55;
   }
+  .book-link{ color: var(--ink-3); text-decoration: none; transition: color .15s ease; }
+  .book-link:hover{ color: var(--accent-ink); }
   .form-error{
     color: var(--danger); font-size: 13px; margin-top: 12px; min-height: 16px;
     transition: opacity .2s ease;
@@ -974,6 +961,7 @@
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </span>
       </a>
+      <a href="https://calendly.com/dhruvkaul55/30min" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Schedule a quick call →</a>
     </div>
   </div>
 </section>
@@ -1006,7 +994,7 @@
       <div>
         <div class="section-label">The brief</div>
         <h2 class="section-title">One dashboard. Ranked by intent. <em>There before you are.</em></h2>
-        <p class="section-lead">Every channel funnels through LeadDawn overnight. Calls are answered live. Texts and form fills get the same instant treatment. By morning, it's all on one dashboard, in order.</p>
+        <p class="section-lead">Every channel funnels through LeadDawn. Calls are answered live. Texts and form fills get the same instant treatment. By morning, it's all on one dashboard, in order.</p>
       </div>
 
       <div class="brief-stage">
@@ -1015,30 +1003,22 @@
             <div class="brief-app">
               <span class="app-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M3 18 H21" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round"/>
-                  <path d="M6 18 A6 6 0 0 1 18 18" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" opacity=".75"/>
-                  <path d="M12 7 V4 M12 7 L9.6 5.4 M12 7 L14.4 5.4" stroke="#ffffff" stroke-width="1.4" stroke-linecap="round"/>
+                  <path d="M2 18 H22" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round"/>
+                  <path d="M5 18 A7 7 0 0 1 19 18" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round"/>
+                  <path d="M12 6 V2.5 M12 6 L9.2 4.2 M12 6 L14.8 4.2" stroke="#ffffff" stroke-width="1.4" stroke-linecap="round"/>
                 </svg>
               </span>
               <span>LeadDawn &middot; Morning brief</span>
             </div>
-            <span class="brief-time">Tue &middot; 6:30 AM</span>
+            <span class="brief-time">Tue &middot; 8:00 AM</span>
           </header>
 
           <div class="brief-body">
             <div class="brief-summary-bar" aria-label="Overnight summary">
               <div class="stat"><div class="num">4</div><div class="lbl">Leads</div></div>
               <div class="stat booked"><div class="num">1</div><div class="lbl">Booked</div></div>
-              <div class="stat awaiting"><div class="num">1</div><div class="lbl">Awaiting you</div></div>
+              <div class="stat qualified"><div class="num">1</div><div class="lbl">Qualified</div></div>
               <div class="stat"><div class="num">2</div><div class="lbl">Follow up</div></div>
-            </div>
-
-            <div class="brief-filters" role="tablist" aria-label="Filter leads">
-              <button class="filter active" type="button" tabindex="-1">All</button>
-              <button class="filter" type="button" tabindex="-1">Hot</button>
-              <button class="filter" type="button" tabindex="-1">Booked</button>
-              <button class="filter" type="button" tabindex="-1">Follow-up</button>
-              <span class="filter-count">Showing 4</span>
             </div>
 
             <ol class="leads-list">
@@ -1046,43 +1026,46 @@
                 <span class="lead-rank">01</span>
                 <div>
                   <div class="lead-name">Maria Chen</div>
-                  <div class="lead-detail">Pre-approved at $800k, wants Pasadena. Booked into your 10:30 AM.</div>
+                  <div class="lead-detail">Pre-approved at $800k, asking about 412 Maple. Booked into your 10:30 AM.</div>
+                  <div class="lead-source">Phone call</div>
                 </div>
                 <span class="lead-tag booked"><span class="tdot"></span>10:30 AM</span>
               </li>
               <li class="lead-row">
                 <span class="lead-rank">02</span>
                 <div>
-                  <div class="lead-name">James Riley</div>
-                  <div class="lead-detail">Asked about 412 Maple, then went quiet. Worth a follow-up.</div>
+                  <div class="lead-name">Sarah Patel</div>
+                  <div class="lead-detail">Pre-approved at $650k, wants a 3-bed. Qualified and ready for your call.</div>
+                  <div class="lead-source">SMS</div>
                 </div>
-                <span class="lead-tag"><span class="tdot"></span>Follow up</span>
+                <span class="lead-tag qualified"><span class="tdot"></span>Qualified</span>
               </li>
               <li class="lead-row">
                 <span class="lead-rank">03</span>
                 <div>
-                  <div class="lead-name">Sarah Patel</div>
-                  <div class="lead-detail">Mid-conversation, awaiting your input on financing options.</div>
+                  <div class="lead-name">James Riley</div>
+                  <div class="lead-detail">Asked about 1118 Orange Grove, then went quiet. Worth a follow-up.</div>
+                  <div class="lead-source">Zillow</div>
                 </div>
-                <span class="lead-tag midconv"><span class="tdot"></span>Awaiting you</span>
+                <span class="lead-tag"><span class="tdot"></span>Follow up</span>
               </li>
               <li class="lead-row">
                 <span class="lead-rank">04</span>
                 <div>
-                  <div class="lead-name">Anonymous</div>
-                  <div class="lead-detail">Viewing inquiry on 1118 Orange Grove. Light interest, no contact left.</div>
+                  <div class="lead-name">David Nguyen</div>
+                  <div class="lead-detail">Inquiry on 230 Brentwood Circle. Wants a viewing this week.</div>
+                  <div class="lead-source">Realtor.com</div>
                 </div>
-                <span class="lead-tag cold"><span class="tdot"></span>Low intent</span>
+                <span class="lead-tag"><span class="tdot"></span>Follow up</span>
               </li>
             </ol>
           </div>
 
           <footer class="brief-foot">
-            <span class="brief-time">Synced 6:28 AM</span>
-            <a href="#" class="open-dash" tabindex="-1">Open dashboard <span aria-hidden="true">→</span></a>
+            <span class="brief-time">Synced 7:58 AM</span>
           </footer>
         </article>
-        <div class="stamp" aria-hidden="true">iPhone &middot; 6:30 AM</div>
+        <div class="stamp" aria-hidden="true">iPhone &middot; 8:00 AM</div>
       </div>
     </div>
   </div>
@@ -1093,7 +1076,7 @@
   <div class="wrap">
     <div class="convo-head">
       <div class="section-label">The conversation</div>
-      <h2 class="section-title">Buyers don't feel like they're talking to a bot. <em>That's the point.</em></h2>
+      <h2 class="section-title">Built to sound like your team. <em>Not a robot.</em></h2>
       <p class="section-lead">Calls answered live. Texts answered instantly. Every interaction in your team's voice, branded as your assistant, so the buyer feels heard, not handled.</p>
     </div>
 
@@ -1246,12 +1229,12 @@
       <div class="step">
         <span class="step-num">STEP 03</span>
         <span class="step-icon" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 3v3M5.6 5.6l2.1 2.1M3 12h3M18.4 5.6l-2.1 2.1M21 12h-3M4 19h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="4.5" cy="7" r="1.3" fill="currentColor"/><circle cx="4.5" cy="12" r="1.3" fill="currentColor"/><circle cx="4.5" cy="17" r="1.3" fill="currentColor"/><path d="M8.5 7h10M8.5 12h7M8.5 17h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
         </span>
-        <h3>You wake up to the brief.</h3>
-        <p>One screen, ranked by intent. Hot leads booked. Mid-conversation leads flagged. Tire-kickers filtered. Walk into your day already knowing what matters.</p>
+        <h3>You see the brief when you're back.</h3>
+        <p>One screen, ranked by intent. Hot leads booked. Mid-conversation leads flagged. Tire-kickers filtered. Whenever you check, you know what matters.</p>
         <div class="channels">
-          <span>Ranked by intent</span><span>One screen</span><span>6:30 AM</span>
+          <span>Ranked by intent</span><span>One screen</span><span>Always synced</span>
         </div>
       </div>
     </div>
@@ -1288,7 +1271,7 @@
 
       <div class="compare-col us">
         <span class="tag"><span class="pip" aria-hidden="true"></span>LeadDawn</span>
-        <h4>Overnight lead concierge</h4>
+        <h4>Always-on lead concierge</h4>
         <ul>
           <li><span class="dot"></span><span>Captures, qualifies, <em style="font-family:var(--serif);font-style:italic;color:var(--accent-ink);font-size:1.05em;">and</em> books</span></li>
           <li><span class="dot"></span><span>Morning brief, ranked by intent</span></li>
@@ -1306,7 +1289,7 @@
   <div class="wrap">
     <div class="cta-card">
       <h2>Be one of the <em>first teams</em> to try it.</h2>
-      <p class="cta-lead">We're piloting with a handful of teams in early 2026. Drop your email and we'll reach out when there's a spot open.</p>
+      <p class="cta-lead">We're piloting with a handful of teams this summer. Drop your email and we'll reach out shortly.</p>
 
       <div class="form-wrap" id="formWrap">
         <form class="early" id="earlyForm" action="https://formspree.io/f/mdajyjww" method="POST" novalidate>
@@ -1320,7 +1303,7 @@
             <input type="email" name="email" id="emailInput" placeholder="you@brokerage.com" required autocomplete="email" />
           </label>
 
-          <label class="field" aria-label="Team size">
+          <label class="field team-size" aria-label="Team size">
             <svg class="lead-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M16 11a4 4 0 1 0-4-4 4 4 0 0 0 4 4zm0 2c-4 0-7 2-7 5v2h14v-2c0-3-3-5-7-5zM8 11a3.5 3.5 0 1 0-3.5-3.5A3.5 3.5 0 0 0 8 11zm-.6 2A6 6 0 0 0 2 18v2h6v-2a7 7 0 0 1 1.3-4 8.5 8.5 0 0 0-1.9-1z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>
             <select name="team_size" id="teamSize" required>
               <option value="" disabled selected>Team size</option>
@@ -1353,8 +1336,7 @@
           <p>We'll reach out when a pilot slot opens. No spam in the meantime.</p>
         </div>
       </div>
-
-      <p class="form-note">We're piloting with a handful of teams in early 2026. No spam, just a note when we're ready to onboard you.</p>
+      <p class="form-note" style="margin-top:10px;">Prefer to talk? <a href="https://calendly.com/dhruvkaul55/30min" target="_blank" rel="noopener noreferrer" class="book-link">Book a quick call →</a></p>
     </div>
   </div>
 </section>
@@ -1362,11 +1344,7 @@
 <footer>
   <div class="wrap row">
     <div>&copy; 2026 LeadDawn. We handle it. You close it.</div>
-    <div style="display:flex; gap:20px;">
-      <a href="#">Privacy</a>
-      <a href="#">Terms</a>
-      <a href="mailto:dhruvkaul55@gmail.com">Contact</a>
-    </div>
+    <div><a href="mailto:dhruvkaul55@gmail.com">Contact</a></div>
   </div>
 </footer>
 
